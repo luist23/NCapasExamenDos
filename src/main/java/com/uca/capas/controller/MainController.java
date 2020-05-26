@@ -15,27 +15,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uca.capas.dao.ContribuyenteDAO;
-import com.uca.capas.dao.EstudianteDAO;
-import com.uca.capas.dao.ImportanciaDAO;
 import com.uca.capas.domain.Categoria;
 import com.uca.capas.domain.Contribuyente;
 import com.uca.capas.domain.Estudiante;
 import com.uca.capas.domain.Importancia;
 import com.uca.capas.domain.Libro;
 import com.uca.capas.service.CategoriaService;
-import com.uca.capas.service.ContribuyenteService;
-import com.uca.capas.service.ImportanciaService;
 import com.uca.capas.service.LibroService;
 
 @Controller
 public class MainController {
-	
-	@Autowired
-	ContribuyenteService contribuyenteService;
-	
-	@Autowired
-	ImportanciaService importanciaService;
 	
 	@Autowired
 	CategoriaService categoriaService;
@@ -152,7 +141,7 @@ public class MainController {
 		return mav;
 	}
 	
-	@RequestMapping("/inicio")
+	/*@RequestMapping("/inicio")
 	public ModelAndView inicio() {
 		ModelAndView mav = new ModelAndView();
 		List<Importancia> importancias = null;
@@ -196,6 +185,8 @@ public class MainController {
 		return mav;
 		
 	}
+	*/
+	
 	
 	/*@RequestMapping("/formEstudiante")
 	public ModelAndView formProducto(@Valid @ModelAttribute Estudiante estudiante, BindingResult result) {
@@ -222,7 +213,7 @@ public class MainController {
 		
 	}*/
 	
-	@RequestMapping("/deleteContribuyente")
+	/*@RequestMapping("/deleteContribuyente")
 	public String delete(@RequestParam Integer codigo) {
 		Contribuyente estudiante = contribuyenteService.findOne(codigo);
 			try {
@@ -235,6 +226,6 @@ public class MainController {
 			
 		return "redirect:/listado";
 		
-	}
+	}*/
 
 }

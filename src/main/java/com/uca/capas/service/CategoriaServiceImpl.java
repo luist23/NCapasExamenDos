@@ -9,7 +9,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.uca.capas.dao.CategoriaDAO;
-import com.uca.capas.dao.ContribuyenteDAO;
 import com.uca.capas.domain.Categoria;
 
 @Service
