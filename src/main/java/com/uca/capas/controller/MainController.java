@@ -18,11 +18,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.uca.capas.dao.ContribuyenteDAO;
 import com.uca.capas.dao.EstudianteDAO;
 import com.uca.capas.dao.ImportanciaDAO;
+import com.uca.capas.domain.Categoria;
 import com.uca.capas.domain.Contribuyente;
 import com.uca.capas.domain.Estudiante;
 import com.uca.capas.domain.Importancia;
+import com.uca.capas.domain.Libro;
+import com.uca.capas.service.CategoriaService;
 import com.uca.capas.service.ContribuyenteService;
 import com.uca.capas.service.ImportanciaService;
+import com.uca.capas.service.LibroService;
 
 @Controller
 public class MainController {
@@ -32,6 +36,91 @@ public class MainController {
 	
 	@Autowired
 	ImportanciaService importanciaService;
+	
+	@Autowired
+	CategoriaService categoriaService;
+	
+	@Autowired
+	LibroService libroService;
+	
+	@RequestMapping("/index")
+	public ModelAndView index() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("index");
+		return mav;
+	}
+	
+	@RequestMapping("/ingresarCategoria")
+	public ModelAndView ingresarCAtegoria() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("categoria", new Categoria());
+		mav.setViewName("ingresarCategoria");
+		return mav;
+	}
+	
+	@PostMapping("/newCategoria")
+	public ModelAndView newCategoria(@Valid @ModelAttribute Categoria categoria, BindingResult result) {
+		
+		ModelAndView mav = new ModelAndView(); 
+		if(!result.hasErrors()) {
+			try {
+				categoriaService.insert(categoria);
+				mav.setViewName("exito");
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+				mav.setViewName("index");
+			}
+			
+			categoria = new Categoria();
+			mav.addObject("categoria", categoria);
+			
+		}
+		return mav;
+	}
+	
+	@RequestMapping("/igresarLibro")
+	public ModelAndView ingresarLibro() {
+		ModelAndView mav = new ModelAndView();
+		List<Categoria> categorias = null;
+		try {
+			categorias = categoriaService.findAll();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		mav.addObject("ListCategoria", categorias);
+		mav.addObject("libro", new Libro());
+		mav.setViewName("ingresarLibro");
+		return mav;
+	}
+	
+	@PostMapping("/newLibro")
+	public ModelAndView newLibro(@Valid @ModelAttribute Libro libro, BindingResult result) {
+		
+		ModelAndView mav = new ModelAndView();
+	    Date date = new Date();  
+		
+		if(!result.hasErrors()) {
+			try {
+				libro.setFecha(date);
+				libroService.insert(libro);
+				mav.setViewName("exito");
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+				mav.setViewName("index");
+			}
+			
+			libro = new Libro();
+			mav.addObject("contribuyente", libro);
+			
+		}
+		
+		
+		
+		return mav;
+		
+	}
 	
 	@RequestMapping("/listado")
 	public ModelAndView listado() {
