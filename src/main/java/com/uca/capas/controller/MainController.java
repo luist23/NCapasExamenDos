@@ -65,7 +65,7 @@ public class MainController {
 			mav.addObject("categoria", categoria);
 			
 		}
-		mav.addObject("mensaje", new Mensaje("Categoria Ingresada con EXITO"));
+		mav.addObject("mensaje", new Mensaje("Categoria guardada con EXITO"));
 		mav.setViewName("index");
 		return mav;
 	}
@@ -104,7 +104,7 @@ public class MainController {
 			mav.addObject("libro", libro);
 			
 		}		
-		mav.addObject("mensaje", new Mensaje("Libro ingresado con EXITO"));
+		mav.addObject("mensaje", new Mensaje("Libro guardado con EXITO"));
 		mav.setViewName("index");
 		return mav;
 	}
