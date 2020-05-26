@@ -37,7 +37,8 @@
 			<th scope="col">Autor</th>
 			<th scope="col">ISBN</th>
 			<th scope="col">Categoria</th>
-			<th scope="col">fecha ingresso</th>
+			<th scope="col">Fecha ingreso</th>
+			<th scope="col">Estado</th>
 		</thead>
 		<th:block th:each="e, row: ${libros}">
 			<tr>
@@ -48,6 +49,7 @@
 					<td class="bg-primary" th:text="${e.isbn}"/>
 					<td class="bg-primary" th:text="${e.categoria.categoria}"/>
 					<td class="bg-primary" th:text="${#dates.format(e.fecha, 'dd/MMM/yyyy hh:mm')}"/>
+					<td class="bg-primary" th:text="${e.estadoDelegate}"/>
 				
 			</tr>
 		</th:block>
@@ -63,7 +65,7 @@
 	
 	<br>
 	<br>
-	<button class="btn btn-outline-light"><a href="/inicio" style="text-decoration:none; color: #000;">Volver</a></button>
+	<button class="btn btn-outline-light"><a href="/index" style="text-decoration:none; color: #000;">Volver</a></button>
 	</div>
 </body>
 </html>
