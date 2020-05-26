@@ -48,24 +48,26 @@
 					<td class="bg-primary" th:text="${e.autor}"/>
 					<td class="bg-primary" th:text="${e.isbn}"/>
 					<td class="bg-primary" th:text="${e.categoria.categoria}"/>
-					<td class="bg-primary" th:text="${#dates.format(e.fecha, 'dd/MMM/yyyy hh:mm')}"/>
+					<td class="bg-primary" th:text="${#dates.format(e.fecha, 'dd/MMM/yyyy hh:mm a')}"/>
 					<td class="bg-primary" th:text="${e.estadoDelegate}"/>
 				
 			</tr>
 		</th:block>
 	</table>
-	
 	<form class="contact100-form" method="post" th:action="@{/deleteLibro}">
 	<div class="wrap-contact100">
 					<span class="contact100-form-title"> Eliminar Libro </span>
 					<input type="text"  placeholder="Codigo del Libro" id="codigo" name="codigo">
+					<br>
+					<br>
 					<input type="submit" class="btn btn-outline-light" value="eliminar Libro">
 					</div>
 	</form>
 	
 	<br>
-	<br>
+	<div class="wrap-contact100 ">
 	<button class="btn btn-outline-light"><a href="/index" style="text-decoration:none; color: #000;">Volver</a></button>
+	</div>
 	</div>
 </body>
 </html>

@@ -59,15 +59,19 @@
 						placeholder="ISBN">
 				</div>
 				
-				<label>Categoria</label>
-				<select th:field="*{categoria.codigo}" >
+				<div class="wrap-input100 rs1-wrap-input100 validate-input fullsize">
+				<label for="categoriaBox">Categoria</label>
+				<select th:field="*{categoria.codigo}" name="categoriaBox">
 					<option th:each ="impo: ${ListCategoria}" th:value="${impo.codigo}"
 							th:text ="${impo.categoria}">
 					</option>
 				</select>
+				</div>
 				
-				<label>Estado</label>	
+				<div class="wrap-input100 rs1-wrap-input100 validate-input fullsize">
+				<label for="estado">Estado</label>	
 				<input type="checkbox" th:field="*{estado}" name="estado">
+				</div>
 				
 				<input type="submit" class="btn btn-outline-light" value="Guardar">
 	</form>
