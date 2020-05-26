@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Libreria</title>
@@ -8,5 +8,6 @@
 	<input type="button" onClick = "location.href='/ingresarCategoria';" value="Ingresar Categoria">
 	<input type="button" onClick = "location.href='/igresarLibro';" value="Ingresar Libro">
 	<input type="button" onClick = "location.href='/listado';" value="Ver Libros">
+	<h2 th:text="${mensaje.mensaje}"></h2>
 </body>
 </html>

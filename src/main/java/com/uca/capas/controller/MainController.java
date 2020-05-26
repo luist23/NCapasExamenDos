@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.domain.Categoria;
+import com.uca.capas.domain.Mensaje;
 import com.uca.capas.domain.Contribuyente;
 import com.uca.capas.domain.Estudiante;
 import com.uca.capas.domain.Importancia;
@@ -35,6 +36,7 @@ public class MainController {
 	@RequestMapping("/index")
 	public ModelAndView index() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("mensaje", new Mensaje(""));
 		mav.setViewName("index");
 		return mav;
 	}
@@ -54,17 +56,17 @@ public class MainController {
 		if(!result.hasErrors()) {
 			try {
 				categoriaService.insert(categoria);
-				mav.setViewName("exito");
 				
 			}catch (Exception e) {
 				e.printStackTrace();
-				mav.setViewName("index");
 			}
 			
 			categoria = new Categoria();
 			mav.addObject("categoria", categoria);
 			
 		}
+		mav.addObject("mensaje", new Mensaje("Categoria Ingresada con EXITO"));
+		mav.setViewName("index");
 		return mav;
 	}
 	
@@ -93,17 +95,17 @@ public class MainController {
 			try {
 				libro.setFecha(date);
 				libroService.insert(libro);
-				mav.setViewName("exito");
 				
 			}catch (Exception e) {
 				e.printStackTrace();
-				mav.setViewName("index");
 			}
 			
 			libro = new Libro();
 			mav.addObject("libro", libro);
 			
 		}		
+		mav.addObject("mensaje", new Mensaje("Libro ingresado con EXITO"));
+		mav.setViewName("index");
 		return mav;
 	}
 	
