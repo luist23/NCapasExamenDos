@@ -112,13 +112,24 @@ public class MainController {
 			}
 			
 			libro = new Libro();
-			mav.addObject("contribuyente", libro);
+			mav.addObject("libro", libro);
 			
-		}
-		
-		
-		
+		}		
 		return mav;
+	}
+	
+	@RequestMapping("/deleteLibro")
+	public String deleteLibro(@RequestParam Integer codigo) {
+		Libro libro = libroService.findOne(codigo);
+			try {
+				
+				libroService.delete(libro);
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		return "redirect:/listado";
 		
 	}
 	
@@ -126,16 +137,16 @@ public class MainController {
 	public ModelAndView listado() {
 		ModelAndView mav = new ModelAndView();
 		
-		List<Contribuyente> contribuyentes = null;
+		List<Libro> libros = null;
 		try {
 			
-			contribuyentes = contribuyenteService.findAll();
+			libros = libroService.findAll();
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		mav.addObject("contribuyentes", contribuyentes);
+		mav.addObject("libros", libros);
 		mav.setViewName("listado");
 		
 		return mav;
